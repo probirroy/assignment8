@@ -60,7 +60,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
               Text(task.description),
               SizedBox(height: 8.0),
               Text(
-                'Deadline: ${task.deadline}',
+                'Days Required: ${task.deadline}',
                 style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black),
               ),
               SizedBox(height: 18.0),
@@ -82,8 +82,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task List',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
-          centerTitle: true,
+        title: Text('Task Management',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+        centerTitle: true,
       ),
       body: ListView.builder(
         itemCount: tasks.length,
@@ -117,15 +117,27 @@ class _TaskListScreenState extends State<TaskListScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
-                decoration: InputDecoration(labelText: 'Title',labelStyle: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold), ),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Title',labelStyle: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold), ),
                 onChanged: (value) => title = value,
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Description', labelStyle: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
-                onChanged: (value) => description = value,
+              SizedBox(
+                height: 10, // <-- SEE HERE
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Deadline', labelStyle: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Description', labelStyle: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
+                onChanged: (value) => description = value,
+              ),
+              SizedBox(
+                height: 10, // <-- SEE HERE
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Days Required', labelStyle: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
                 onChanged: (value) => deadline = value,
               ),
             ],
